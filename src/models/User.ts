@@ -7,8 +7,8 @@ var UserSchema = new Schema<User>({
     email: { type: String, required: true },
     password: { type: String, required: true },
     role: { type: String, required: true },
-    loginTries: Number,
-    isLocked: Number,
+    loginTries: {type: Number, default: 0},
+    isLocked: {type: Boolean, default: false},
     fcmToken: String,
     image: String
 });

@@ -5,8 +5,8 @@ interface User {
     email: string,
     password: string,
     role: string,
-    loginTries: Number,
-    isLocked: Number,
-    fcmToken: String,
+    loginTries: number,
+    isLocked: boolean,
+    fcmToken: string,
     image: string
   }
