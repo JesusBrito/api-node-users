@@ -3,7 +3,7 @@ import app from "./app";
 
 const port = process.env.PORT ;
 
-mongoose.connect(`mongodb://${process.env.URL_HOST_DB}`, {
+mongoose.connect(`${process.env.URL_HOST_DB}`, {
    useNewUrlParser: true,
    useUnifiedTopology: true,
 } as ConnectOptions)

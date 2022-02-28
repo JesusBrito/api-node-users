@@ -10,7 +10,6 @@ let UserSchema = new Schema<User>({
     loginTries: {type: Number, default: 0},
     isLocked: {type: Boolean, default: false},
     fcmToken: String,
-    image: String
 });
 
 UserSchema.set('toJSON', {
