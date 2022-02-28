@@ -55,13 +55,12 @@ export async function login(req: Request, res: Response) {
     let password = params.password;
     let fcmToken = params.token;
     let user = await UserModel.findOne({ email: email.toLowerCase() });
-    console.log(email);
     
     if (user) {
       if (user.isLocked === false) {
         const validationHash = await validateHash(user.password!, password);
         if (validationHash) {
-          user.fcmToken = fcmToken;
+          user.fcmToken = fcmToken;          
           user.loginTries = 0;
           await user.save();
           const token = await createToken(user);
