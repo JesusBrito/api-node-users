@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
-var Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
-var UserSchema = new Schema<User>({
+let UserSchema = new Schema<User>({
     name: { type: String, required: true },
     surname: { type: String, required: true },
     email: { type: String, required: true },
@@ -12,6 +12,12 @@ var UserSchema = new Schema<User>({
     fcmToken: String,
     image: String
 });
+
+UserSchema.set('toJSON', {
+    transform: (document, returnedObject: User) => {
+        delete returnedObject.password
+    }
+})
 
 const UserModel = mongoose.model<User>('User', UserSchema);
 export default UserModel;

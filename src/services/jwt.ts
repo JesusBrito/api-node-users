@@ -3,11 +3,10 @@ import jsonwebtoken from "jsonwebtoken"
 
 export async function createToken(user: User) {
     const payload = {
-        id: user._id,
-        exp: getUnixTime(add(new Date(), {
-            months: 1,
-        }))
+        id: user._id
     }
-    const token =  await jsonwebtoken.sign(payload, process.env.SECRET_TOKEN || "String_Secreto")
+    const token = jsonwebtoken.sign(payload, process.env.SECRET_TOKEN || "String_Secreto", {
+        expiresIn: "2h",
+      })
     return token
 };

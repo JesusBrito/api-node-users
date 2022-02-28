@@ -18,7 +18,7 @@ export async function createNotification(title: string, body: string) {
 
 export async function getNotifications(req: Request, res: Response) {
   try {
-    let notifications = NotificationModel.find();
+    const notifications = await NotificationModel.find({});
     res.status(200).send({ notifications: notifications });
   } catch (error) {
     console.log(error);

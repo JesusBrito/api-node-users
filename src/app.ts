@@ -4,6 +4,7 @@ import 'dotenv/config'
 //RUTAS
 import userRoutes from "./routes/users"
 import notificationRoutes from "./routes/notifications"
+import indexPriceQuotesRoutes from "./routes/indexPriceQuotes";
 
 const app = express();
 app.use(bodyParser.urlencoded({extended:false}));
@@ -16,9 +17,11 @@ app.use((req,res,next)=>{
 	res.header('Allow','GET, POST, OPTIONS, PUT, DELETE');
 	next();
 });
+app.disable('etag');
 
 //rutas base
 app.use('/api', userRoutes);
 app.use('/api', notificationRoutes);
+app.use('/api', indexPriceQuotesRoutes);
 
 export default app;
